@@ -132,7 +132,7 @@ async function sendImage(imageData: File, setImageDetail: any, setAudioUrl: any)
 	const compressed = await compressImage(imageData);
 
 	const reader = new FileReader();
-	reader.readAsDataURL(compressed);
+	reader.readAsDataURL(compressed as Blob);
 	reader.onload = async () => {
 		const response = await fetch("/api/imagepredict", {
 			method: "POST",
@@ -177,11 +177,11 @@ async function compressImage(imageData: File) {
 			canvas.width = width;
 			canvas.height = height;
 
-			ctx.drawImage(img, 0, 0, width, height);
+			ctx!.drawImage(img, 0, 0, width, height);
 
 			canvas.toBlob(
 				(blob) => {
-					resolve(new File([blob], "compressed.jpg", { type: "image/jpeg" }));
+					resolve(new File([blob!], "compressed.jpg", { type: "image/jpeg" }));
 				},
 				"image/jpeg",
 				0.8

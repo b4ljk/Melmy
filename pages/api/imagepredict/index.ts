@@ -9,15 +9,20 @@ const replicate = new Replicate({
 });
 
 export default async function hander(req: NextApiRequest, res: NextApiResponse) {
-	const output = await replicate.run(
-		"salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746",
-		{
-			input: {
-				image: req.body,
-			},
-		}
-	);
-	const caption = output.split(":")[1];
+	let output: any;
+	output = await replicate.run("salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746", {
+		input: {
+			image: req.body,
+		},
+	});
+	let caption;
+	if (typeof output === "string" && output) {
+		caption = output.split(":")[1];
+	} else {
+		console.error("Error: output is not a string", output);
+		res.end();
+		return;
+	}
 
 	const translation = await translate(caption, "en", "mn-Cyrl");
 
