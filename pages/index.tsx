@@ -145,7 +145,7 @@ const useStyles = createStyles((theme) => ({
 const videoConstraints = {
   width: 1280,
   height: 720,
-  facingMode: "user",
+  facingMode: "environment",
 };
 
 async function sendImage(
