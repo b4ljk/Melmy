@@ -247,7 +247,6 @@ const Home = () => {
     if (webcamRef.current) {
       const imageSrc = (webcamRef.current as any).getScreenshot();
       setNoNeedToCompress(imageSrc);
-      console.log(imageSrc);
     }
   }, [webcamRef]);
 
@@ -255,7 +254,7 @@ const Home = () => {
     const imageUrl = URL.createObjectURL(file || "");
     return (
       <MantineImage
-        alt="image"
+        alt="Selected Image, Сонгогдсон зураг"
         key={index}
         src={imageUrl}
         imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
@@ -340,6 +339,7 @@ const Home = () => {
           </Dropzone>
           <Flex className={classes.controlD} gap={16}>
             <Button
+              aria-label="Choose Picture, Зураг сонгох"
               size="md"
               radius="xl"
               onClick={() => openRef.current?.()}
@@ -348,6 +348,7 @@ const Home = () => {
               Зураг сонгох
             </Button>
             <Button
+              aria-label="Open camera, Камер нээх"
               // className={classes.controlD}
               size="md"
               radius="xl"
@@ -365,12 +366,16 @@ const Home = () => {
           {cameraOpen ? (
             <Stack>
               {noNeedToCompress ? (
-                <MantineImage src={noNeedToCompress} alt="Taken Image" />
+                <MantineImage
+                  src={noNeedToCompress}
+                  alt="Дарсан зураг, Taken Image"
+                />
               ) : (
                 <Webcam
                   ref={webcamRef}
                   audio={false}
                   height="auto"
+                  alt="Camera, Камер"
                   screenshotFormat="image/jpeg"
                   width="100%"
                   videoConstraints={videoConstraints}
@@ -381,11 +386,16 @@ const Home = () => {
                 <Button
                   rightIcon={<Refresh />}
                   onClick={() => setNoNeedToCompress(undefined)}
+                  aria-label="Retry, Дахин авах"
                 >
                   Дахин авах
                 </Button>
               ) : (
-                <Button onClick={() => capture()} rightIcon={<Camera />}>
+                <Button
+                  onClick={() => capture()}
+                  rightIcon={<Camera />}
+                  aria-label="Take Picture, Зураг авах"
+                >
                   Зураг авах
                 </Button>
               )}
@@ -398,6 +408,7 @@ const Home = () => {
               sendImage(images?.[0], setAudioUrl, noNeedToCompress);
               startLoading();
             }}
+            aria-label="Send, Илгээх"
             w={"100%"}
             mt={12}
             loading={loading}
@@ -408,7 +419,6 @@ const Home = () => {
         </Modal>
         <div className={classes.wrapper}>{imageDetail}</div>
       </div>
-      {/* <Button onClick={() => {}}>FUCK YOIU</Button> */}
       <div>{audioUrl && <audio controls autoPlay src={audioUrl} />}</div>
     </Container>
   );
