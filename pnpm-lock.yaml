@@ -73,6 +73,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hotjar:
+    specifier: ^5.5.0
+    version: 5.5.0
   react-webcam:
     specifier: ^7.0.1
     version: 7.0.1(react-dom@18.2.0)(react@18.2.0)
@@ -3209,6 +3212,10 @@ packages:
       file-selector: 0.6.0
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-hotjar@5.5.0:
+    resolution: {integrity: sha512-cXp1DKUruibmbSvCCRl4hXLagT7fVUiFJbpXtVDovVjNxooClf7ZXdkkzbATpPSU4+IuvYP773T4vXXnjrV3dg==}
     dev: false
 
   /react-is@16.13.1:
