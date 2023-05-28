@@ -80,6 +80,12 @@ const useStyles = createStyles((theme) => ({
     WebkitTextFillColor: "transparent",
   },
 
+  greenStuff: {
+    background:"#45cf0e",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
+
   description: {
     textAlign: "center",
 
@@ -279,9 +285,10 @@ const Home = () => {
       <div className={classes.inner}>
         <Title className={classes.title}>
           <Text component="span" className={classes.highlight} inherit>
-            Melmy
+            Techstars
+            <Text component="span" className={classes.greenStuff}>_</Text>
           </Text>{" "}
-          - Зураг танигч систем
+           start-up demo subsystem
         </Title>
 
         <Container p={0} size={600}>
