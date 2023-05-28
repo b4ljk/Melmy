@@ -16,3 +16,4 @@ Melmy is an application for image recognition and text-to-speech conversion, des
 <img src="./public/melmy.png" style="width:100%; height:auto; object-fit:cover;">
 
  > This project is made for the Creation Competition at National University of Mongolia 2023
+ > force redeployment
