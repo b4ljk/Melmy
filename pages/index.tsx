@@ -14,13 +14,7 @@ import {
 } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  IconCamera,
-  IconCloudUpload,
-  IconDownload,
-  IconPaperclip,
-  IconX,
-} from "@tabler/icons-react";
+import { IconCamera, IconCloudUpload, IconDownload, IconPaperclip, IconX } from "@tabler/icons-react";
 import { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import { Camera, Refresh } from "tabler-icons-react";
@@ -44,10 +38,7 @@ const useStyles = createStyles((theme) => ({
 
   dots: {
     position: "absolute",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[5]
-        : theme.colors.gray[1],
+    color: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
 
     [theme.fn.smallerThan("sm")]: {
       display: "none",
@@ -81,7 +72,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   greenStuff: {
-    background:"#45cf0e",
+    background: "#45cf0e",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
@@ -133,10 +124,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   icon: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[3]
-        : theme.colors.gray[4],
+    color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[4],
   },
 
   controlD: {
@@ -248,9 +236,7 @@ const Home = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [imageDetail, setImageDetail] = useState<string>("");
   const [cameraOpen, setCameraOpen] = useState<boolean>(false);
-  const [noNeedToCompress, setNoNeedToCompress] = useState<
-    string | undefined
-  >();
+  const [noNeedToCompress, setNoNeedToCompress] = useState<string | undefined>();
   const [loading, setIsloading] = useState<boolean>(false);
   const webcamRef = useRef(null);
   const capture = useCallback(() => {
@@ -285,16 +271,14 @@ const Home = () => {
       <div className={classes.inner}>
         <Title className={classes.title}>
           <Text component="span" className={classes.highlight} inherit>
-            Techstars
-            <Text component="span" className={classes.greenStuff}>_</Text>
+            Naiman.ai
           </Text>{" "}
-           start-up demo subsystem
+          Demo subsystem
         </Title>
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
-            Машин сургалт ашиглан зурагнаас обьект таньж аудио хэлбэрээр уншиж
-            өгөх систем
+            Машин сургалт ашиглан зурагнаас обьект таньж аудио хэлбэрээр уншиж өгөх систем
           </Text>
         </Container>
 
@@ -314,27 +298,15 @@ const Home = () => {
             {/* <div style={{ pointerEvents: "none" }}> */}
             <Group position="center">
               <Dropzone.Accept>
-                <IconDownload
-                  size={rem(50)}
-                  color={theme.colors[theme.primaryColor][6]}
-                  stroke={1.5}
-                />
+                <IconDownload size={rem(50)} color={theme.colors[theme.primaryColor][6]} stroke={1.5} />
               </Dropzone.Accept>
               <Dropzone.Reject>
-                <IconX
-                  size={rem(50)}
-                  color={theme.colors.red[6]}
-                  stroke={1.5}
-                />
+                <IconX size={rem(50)} color={theme.colors.red[6]} stroke={1.5} />
               </Dropzone.Reject>
               <Dropzone.Idle>
                 <IconCloudUpload
                   size={rem(50)}
-                  color={
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[0]
-                      : theme.black
-                  }
+                  color={theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black}
                   stroke={1.5}
                 />
               </Dropzone.Idle>
@@ -433,13 +405,7 @@ const Home = () => {
           )}
           <Button
             onClick={() => {
-              sendImage(
-                images?.[0],
-                setAudioUrl,
-                setIsloading,
-                close,
-                noNeedToCompress
-              );
+              sendImage(images?.[0], setAudioUrl, setIsloading, close, noNeedToCompress);
               setIsloading(true);
             }}
             variant="gradient"

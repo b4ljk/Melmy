@@ -23,14 +23,18 @@ export default async function hander(req: NextApiRequest, res: NextApiResponse) 
 		return;
 	}
 
-	const translation = await translate(caption, "en", "mn-Cyrl");
-
+	const translation = await axios.post("https://law-gpt-three.vercel.app//translation/tomn",{
+		"translation_str":caption
+	  })
+	  
+	console.log(translation)
+	
 	const url = "https://api.chimege.com/v1.2/synthesize";
 	const headers = {
 		"Content-Type": "plain/text",
 		Token: process.env.CHIMEGE_TOKEN,
 	};
-	const text = "Зурагны тайлбар бол : " + translation.translation;
+	const text = "Зурагны тайлбар бол : " + translation.data.translation;
 
 	const response = await axios.post(url, text, {
 		headers,
