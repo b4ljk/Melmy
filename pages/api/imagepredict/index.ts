@@ -23,10 +23,11 @@ export default async function hander(req: NextApiRequest, res: NextApiResponse) 
 		return;
 	}
 
-	const translation = await axios.post("https://law-gpt-three.vercel.app//translation/tomn",{
-		"translation_str":caption
-	  })
-	  
+	// const translation = await axios.post("https://law-gpt-three.vercel.app//translation/tomn",{
+	// 	"translation_str":caption
+	//   })
+	const translation = await translate(caption, "en", "mn-Cyrl");
+
 	console.log(translation)
 	
 	const url = "https://api.chimege.com/v1.2/synthesize";
@@ -34,7 +35,7 @@ export default async function hander(req: NextApiRequest, res: NextApiResponse) 
 		"Content-Type": "plain/text",
 		Token: process.env.CHIMEGE_TOKEN,
 	};
-	const text = "Зурагны тайлбар бол : " + translation.data.translation;
+	const text = "Зурагны тайлбар бол : " + translation.translation;
 
 	const response = await axios.post(url, text, {
 		headers,
